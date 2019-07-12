@@ -1,0 +1,32 @@
+xkb_keymap {
+    xkb_keycodes { include "evdev+aliases(qwerty)" };
+    xkb_geometry { include "pc(pc104)" };
+    xkb_types    {
+	include "complete"
+	type "THREE_GROUPS" {
+	    modifiers = Shift+Control+Alt;
+	    map[None] = Level1;
+	    map[Shift] = Level2;
+	    map[Control] = Level3;
+	    map[Control+Shift] = Level4;
+	    map[Alt] = Level5;
+	    level_name[Level1] = "Base";
+	    level_name[Level2] = "Shift";
+	    level_name[Level3] = "Ctrl";
+	    level_name[Level4] = "Ctrl Shift";
+	    level_name[Level5] = "Alt";
+	};
+    };
+    xkb_compatibility { include "complete" };
+    xkb_symbols {
+	//include "pc(pc104)+us+ru(typewriter):2+ua:3+us(dvorak):4+level3(menu_switch)+my(spec)"
+	//include "pc+us+inet(genius)+ru(winkeys):2+ua(winkeys):3+us(dvorak):4+level3(menu_switch)"
+	//include "pc(pc105)+us+ru(winkeys):2+ua(winkeys):3+us(dvorak):4+level3(menu_switch)"
+	include "pc+us+ru:2+ua:3+us(dvorak):4+level3(menu_switch)+inet(evdev)"
+	replace key <CAPS>
+	{
+	    type = "THREE_GROUPS",
+	    actions[Group1]=[LockGroup(group=1), LockGroup(group=2), LockGroup(group=3), LockMods(modifiers=Lock), LockGroup(group=4)]
+	};
+    };
+};
