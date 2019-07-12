@@ -10,6 +10,4 @@
 cd /usr/share/X11/xkb/ && xkbcomp keymap/three_groups $DISPLAY &>/dev/null
 )
 
-xset dpms 0 0 0
-
 true
